@@ -38,7 +38,7 @@ class Blockchain:
       self.chain.append(block)
       return block
 
-  # POLYMORPHISM: First one for model updates, second for miner rewards
+  # For global model updates
   def new_global(self, gradients):
       """
       Creates a new transaction to go into the next mined Block
@@ -55,6 +55,7 @@ class Blockchain:
 
       return self.last_block['index'] + 1
 
+  # For local model updates
   def new_gradients(self, trainer, gradients, d_size):
       """
       Creates a new transaction to go into the next mined Block
@@ -72,7 +73,7 @@ class Blockchain:
 
       return self.last_block['index'] + 1
 
-
+  # For miner rewards (in case such a thing is needed)
   def new_transaction(self, sender, recipient, amount):
       """
       Creates a new transaction to go into the next mined Block
